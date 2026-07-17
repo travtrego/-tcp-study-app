@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="theme-color" content="#0b1020" />
+<title>TCP Mastery</title>
+<style>
+:root{--bg:#070b16;--panel:#10182b;--panel2:#151f36;--line:#25314d;--text:#f5f7ff;--muted:#9eabc4;--accent:#6c8cff;--good:#35c78a;--bad:#ff6b78;--warn:#f0bc57;--shadow:0 16px 40px rgba(0,0,0,.28)}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#080d1c 0%,#070b16 65%);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh}.app{max-width:980px;margin:auto;padding:18px 14px 96px}.top{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:16px}.brand h1{font-size:24px;margin:0}.brand p{margin:4px 0 0;color:var(--muted);font-size:13px}.pill{border:1px solid var(--line);background:var(--panel);padding:9px 12px;border-radius:999px;color:var(--muted);font-size:12px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.card{background:rgba(16,24,43,.94);border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:var(--shadow)}.metric b{font-size:24px;display:block}.metric span{font-size:12px;color:var(--muted)}.section-title{display:flex;justify-content:space-between;align-items:end;margin:22px 2px 10px}.section-title h2{margin:0;font-size:17px}.section-title small{color:var(--muted)}.topics{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.topic{display:flex;gap:12px;align-items:center;cursor:pointer}.topic input{width:18px;height:18px;accent-color:var(--accent)}.topic-main{flex:1}.topic-name{font-weight:700;font-size:14px}.topic-sub{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin-top:4px}.bar{height:7px;background:#0b1121;border-radius:999px;overflow:hidden;margin-top:8px}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#91a8ff)}button,select{font:inherit}.actions{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:10px;margin-top:12px}.btn{border:0;border-radius:14px;padding:14px 16px;font-weight:800;cursor:pointer}.primary{background:var(--accent);color:white}.secondary{background:var(--panel2);color:var(--text);border:1px solid var(--line)}.danger{background:#30151b;color:#ffc6cb;border:1px solid #62303a}.hidden{display:none!important}.quiz-head{display:flex;justify-content:space-between;gap:10px;align-items:center}.kicker{color:#a8b8ff;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}.question{font-size:20px;line-height:1.45;margin:16px 0}.choices{display:grid;gap:9px}.choice{width:100%;text-align:left;background:#0b1223;border:1px solid var(--line);color:var(--text);padding:14px;border-radius:14px;cursor:pointer}.choice:hover{border-color:#5872c8}.choice.correct{border-color:var(--good);background:#102b24}.choice.wrong{border-color:var(--bad);background:#32171d}.feedback{margin-top:14px;padding:15px;border-radius:14px;background:#0b1223;border:1px solid var(--line)}.feedback h3{margin:0 0 8px;font-size:16px}.feedback p{margin:7px 0;color:#d9e0f0;line-height:1.5}.calc{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap;background:#070b16;padding:12px;border-radius:10px;color:#cfd8ed;font-size:13px}.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.footer-nav{position:fixed;bottom:0;left:0;right:0;background:rgba(7,11,22,.94);backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:10px 14px calc(10px + env(safe-area-inset-bottom));display:flex;justify-content:center}.footer-inner{max-width:980px;width:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.navbtn{padding:10px;border-radius:12px;background:transparent;border:1px solid transparent;color:var(--muted)}.navbtn.active{background:var(--panel);border-color:var(--line);color:white}.settings-row{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}.settings-row:last-child{border:0}.settings-row input,.settings-row select{background:#0b1223;color:white;border:1px solid var(--line);border-radius:10px;padding:9px;width:120px}.note{color:var(--muted);font-size:12px;line-height:1.5}.empty{text-align:center;padding:34px;color:var(--muted)}
+@media(max-width:700px){.grid{grid-template-columns:repeat(2,1fr)}.topics{grid-template-columns:1fr}.actions{grid-template-columns:1fr}.question{font-size:18px}.app{padding-left:12px;padding-right:12px}.pill{display:none}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top"><div class="brand"><h1>TCP Mastery</h1><p>Original adaptive practice • Tax year <span id="taxYearLabel">2026</span></p></div><div class="pill">Independent CPA study tool</div></header>
+
+  <main id="homeView">
+    <section class="grid">
+      <div class="card metric"><b id="accuracyMetric">0%</b><span>Overall accuracy</span></div>
+      <div class="card metric"><b id="answeredMetric">0</b><span>Questions answered</span></div>
+      <div class="card metric"><b id="streakMetric">0</b><span>Current streak</span></div>
+      <div class="card metric"><b id="masteredMetric">0/8</b><span>Topics at 80%+</span></div>
+    </section>
+
+    <div class="section-title"><h2>Current TCP sections</h2><small>Select what you are studying</small></div>
+    <section class="topics" id="topicList"></section>
+
+    <div class="section-title"><h2>Start practice</h2><small>Questions rotate facts and numbers</small></div>
+    <section class="card">
+      <div class="actions">
+        <button class="btn primary" id="mixedBtn">Mixed selected topics</button>
+        <button class="btn secondary" id="weakBtn">Weak areas</button>
+        <button class="btn secondary" id="missedBtn">Missed review</button>
+      </div>
+      <p class="note">The bank currently focuses only on the eight sections you listed. New sections will be added only when you ask.</p>
+    </section>
+  </main>
+
+  <main id="quizView" class="hidden">
+    <section class="card">
+      <div class="quiz-head"><div><div class="kicker" id="quizTopic"></div><div class="note" id="quizMeta"></div></div><button class="btn secondary" id="exitQuiz">Exit</button></div>
+      <div class="question" id="questionText"></div>
+      <div class="choices" id="choices"></div>
+      <div id="feedback" class="feedback hidden"></div>
+      <div class="row"><button class="btn primary hidden" id="nextBtn">Next question</button><button class="btn secondary hidden" id="anotherBtn">Another like this</button></div>
+    </section>
+  </main>
+
+  <main id="settingsView" class="hidden">
+    <div class="section-title"><h2>Settings</h2><small>Stored on this device</small></div>
+    <section class="card">
+      <div class="settings-row"><div><b>Tax year</b><div class="note">Used for displayed limits.</div></div><select id="taxYear"><option>2026</option></select></div>
+      <div class="settings-row"><div><b>2026 HSA self-only limit</b><div class="note">Editable without changing the question engine.</div></div><input id="hsaSelf" type="number" /></div>
+      <div class="settings-row"><div><b>2026 HSA family limit</b></div><input id="hsaFamily" type="number" /></div>
+      <div class="settings-row"><div><b>Single standard deduction</b></div><input id="stdSingle" type="number" /></div>
+      <div class="settings-row"><div><b>MFJ standard deduction</b></div><input id="stdMFJ" type="number" /></div>
+      <div class="settings-row"><div><b>Reset study progress</b><div class="note">Question bank and settings remain.</div></div><button class="btn danger" id="resetBtn">Reset</button></div>
+    </section>
+  </main>
+</div>
+
+<nav class="footer-nav"><div class="footer-inner"><button class="navbtn active" data-view="home">Home</button><button class="navbtn" data-view="quiz">Practice</button><button class="navbtn" data-view="settings">Settings</button></div></nav>
+
+<script>
+const TOPICS=[
+ {id:'equity',name:'Equity Compensation Awards',sub:'ISOs, NSOs, RSUs, ESPPs'},
+ {id:'interest',name:'Imputed Interest',sub:'Below-market and related-party loans'},
+ {id:'amt',name:'AMT Income',sub:'Adjustments, preferences, AMTI'},
+ {id:'kiddie',name:'Kiddie Tax',sub:'Net unearned income and elections'},
+ {id:'hsa',name:'FSA & HSA',sub:'Eligibility, contributions, distributions'},
+ {id:'deductions',name:'Itemized vs. Standard Deduction',sub:'Medical, SALT, charity, mortgage'},
+ {id:'estimated',name:'Estimated Tax',sub:'Safe harbors and installments'},
+ {id:'planning',name:'Year-End Planning',sub:'Timing income and expenses'}
+];
+const DEFAULTS={taxYear:2026,hsaSelf:4400,hsaFamily:8750,stdSingle:15750,stdMFJ:31500};
+const state=JSON.parse(localStorage.getItem('tcpState')||'null')||{selected:Object.fromEntries(TOPICS.map(t=>[t.id,true])),stats:{},missed:[],streak:0,settings:{...DEFAULTS}};
+function save(){localStorage.setItem('tcpState',JSON.stringify(state));}
+function money(n){return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(n)}
+function r(min,max,step=1){return Math.floor((Math.random()*(max-min+step))/step)*step+min}
+function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
+function choiceSet(correct,wrong){return shuffle([correct,...wrong.filter(x=>x!==correct).slice(0,3)]).map(String)}
+function q(topic,concept,prompt,correct,wrong,why,calc,trap){return {topic,concept,prompt,correct:String(correct),choices:choiceSet(String(correct),wrong.map(String)),why,calc,trap}}
+const BANK={
+ equity:[
+ ()=>{let sh=r(100,1000,50),ex=r(10,40),fmv=ex+r(5,25),spread=sh*(fmv-ex);return q('equity','ISO exercise—AMT adjustment',`An employee exercises ${sh} incentive stock options at ${money(ex)} per share when the stock's FMV is ${money(fmv)}. The shares are not sold during the year. What AMT adjustment is generally associated with the exercise?`,money(spread),[money(sh*fmv),money(sh*ex),money(0)],'For AMT, the bargain element on an ISO exercise is generally an adjustment when the stock is not disposed of in the same year.',`${sh} × (${money(fmv)} − ${money(ex)}) = ${money(spread)}`,'Using total FMV instead of the bargain element.')},
+ ()=>{let sh=r(100,900,50),ex=r(8,30),fmv=ex+r(4,20);return q('equity','NSO exercise—ordinary income',`A taxpayer exercises ${sh} nonqualified stock options with an exercise price of ${money(ex)} when FMV is ${money(fmv)}. How much ordinary compensation income is recognized?`,money(sh*(fmv-ex)),[money(sh*fmv),money(sh*ex),money(0)],'NSOs generally create ordinary compensation income at exercise equal to the spread.',`${sh} × (${money(fmv)} − ${money(ex)}) = ${money(sh*(fmv-ex))}`,'Confusing NSOs with qualifying ISO treatment.')},
+ ()=>{let units=r(100,800,50),fmv=r(20,80,5),withheld=r(10,30,5),vest=units*fmv;return q('equity','RSU vesting',`${units} restricted stock units vest when the stock is worth ${money(fmv)} per share. Ignore withholding mechanics. What amount is generally included in compensation income?`,money(vest),[money(vest-withheld*fmv),money(units),money(0)],'RSUs generally create compensation income when they vest, based on FMV at vesting.',`${units} × ${money(fmv)} = ${money(vest)}`,'Reducing income by shares withheld for payroll taxes.')}
+ ],
+ interest:[
+ ()=>{let principal=r(20000,120000,5000),afr=r(3,7),paid=r(0,2),imp=principal*(afr-paid)/100;return q('interest','Below-market demand loan',`A ${money(principal)} demand loan bears ${paid}% interest while the applicable federal rate is ${afr}%. Ignoring exceptions, what annual interest is imputed?`,money(imp),[money(principal*afr/100),money(principal*paid/100),money(0)],'Imputed interest is generally the foregone interest: AFR interest minus interest actually charged.',`${money(principal)} × (${afr}% − ${paid}%) = ${money(imp)}`,'Using the full AFR amount without subtracting stated interest.')},
+ ()=>{let p=r(10000,80000,5000),afr=r(4,7),actual=r(1,3),gift=p*(afr-actual)/100;return q('interest','Gift loan mechanics',`A parent makes a ${money(p)} below-market gift loan to an adult child. AFR is ${afr}% and stated interest is ${actual}%. Ignoring exceptions, how much foregone interest is treated as transferred and retransferred?`,money(gift),[money(p*afr/100),money(p*actual/100),money(0)],'The lender is generally treated as transferring the foregone interest to the borrower, who then retransfers it as interest.',`${money(p)} × (${afr}% − ${actual}%) = ${money(gift)}`,'Treating only the cash interest as the deemed transfer.')}
+ ],
+ amt:[
+ ()=>{let regular=r(80000,180000,5000),iso=r(5000,30000,1000),privateBond=r(1000,9000,500),amti=regular+iso+privateBond;return q('amt','AMTI adjustments',`A taxpayer has regular taxable income of ${money(regular)}, an ISO exercise adjustment of ${money(iso)}, and ${money(privateBond)} of tax-exempt private-activity bond interest treated as an AMT preference. Before exemption, what is AMTI?`,money(amti),[money(regular+iso),money(regular+privateBond),money(regular)],'AMTI begins with regular taxable income and adds applicable AMT adjustments and preference items.',`${money(regular)} + ${money(iso)} + ${money(privateBond)} = ${money(amti)}`,'Leaving out a preference item because it is exempt for regular tax.')},
+ ()=>{let regular=r(20000,50000,1000),amt=r(25000,60000,1000);return q('amt','Tentative minimum tax comparison',`A taxpayer's regular tax is ${money(regular)} and tentative minimum tax is ${money(amt)}. What is the AMT liability?`,money(Math.max(0,amt-regular)),[money(amt),money(regular),money(amt+regular)],'AMT is the excess of tentative minimum tax over regular tax.',`${money(amt)} − ${money(regular)} = ${money(amt-regular)}`,'Reporting tentative minimum tax as the additional AMT itself.')}
+ ],
+ kiddie:[
+ ()=>{let unearned=r(4000,14000,500),threshold=2700,niu=Math.max(0,unearned-threshold);return q('kiddie','Net unearned income',`A child has ${money(unearned)} of unearned income and no earned income. Assume the current kiddie-tax threshold in the question is ${money(threshold)}. What is net unearned income for purposes of this simplified computation?`,money(niu),[money(unearned),money(unearned-threshold/2),money(threshold)],'In this simplified format, net unearned income is unearned income above the threshold stated in the question.',`${money(unearned)} − ${money(threshold)} = ${money(niu)}`,'Taxing the full amount of unearned income at the parent rate.')},
+ ()=>q('kiddie','Parent election',`Which statement best describes the election for a parent to include a child's interest and dividend income on the parent's return?`,'It may simplify filing when statutory requirements are met, but it can change the overall tax result.',['It is mandatory whenever the child has unearned income.','It applies to wages earned by the child.','It always produces a lower combined tax.'],'The election is optional and limited. It can simplify compliance, but taxpayers must compare the consequences.','Conceptual question','Assuming administrative convenience always means lower tax.')
+ ],
+ hsa:[
+ ()=>{let family=Math.random()>.5,limit=family?state.settings.hsaFamily:state.settings.hsaSelf,employer=r(500,Math.max(500,limit-1000),250),max=limit-employer;return q('hsa','HSA contribution limit',`A taxpayer has eligible ${family?'family':'self-only'} HDHP coverage for the full year. The annual HSA limit is ${money(limit)}, and the employer contributes ${money(employer)}. Ignoring catch-up contributions, how much more may the taxpayer contribute?`,money(max),[money(limit),money(employer),money(limit+employer)],'Employer and employee contributions share the same annual HSA limit.',`${money(limit)} − ${money(employer)} = ${money(max)}`,'Adding employer contributions on top of the annual limit.')},
+ ()=>{let dist=r(1000,8000,500),qual=r(0,dist,500),taxable=dist-qual;return q('hsa','HSA distributions',`A taxpayer receives ${money(dist)} from an HSA and substantiates ${money(qual)} of qualified medical expenses. Ignoring any additional tax, what amount is included in gross income?`,money(taxable),[money(dist),money(qual),money(0)],'HSA distributions used for qualified medical expenses are tax-free; the nonqualified portion is generally taxable.',`${money(dist)} − ${money(qual)} = ${money(taxable)}`,'Treating all HSA distributions as automatically tax-free.')},
+ ()=>q('hsa','FSA versus HSA',`Which feature generally distinguishes an HSA from a health FSA?`,'An HSA is owned by the individual and unused balances can carry forward.',['An HSA always requires employer funding.','A health FSA balance is always portable after employment ends.','An HSA may be used only during the plan year.'],'HSAs are individually owned and balances generally roll forward. Health FSAs are employer arrangements and often have use-it-or-lose-it limitations, subject to plan features.','Conceptual question','Reversing the ownership and carryforward rules.')
+ ],
+ deductions:[
+ ()=>{let med=r(8000,25000,500),agi=r(70000,180000,5000),floor=agi*.075,ded=Math.max(0,med-floor);return q('deductions','Medical expense floor',`A taxpayer has AGI of ${money(agi)} and ${money(med)} of otherwise qualifying unreimbursed medical expenses. Using a 7.5% AGI floor, what medical itemized deduction is allowed?`,money(ded),[money(med),money(floor),money(Math.max(0,med-agi*.10))],'Only qualifying medical expenses above 7.5% of AGI are deductible.',`${money(med)} − (${money(agi)} × 7.5%) = ${money(ded)}`,'Deducting all medical expenses or using the wrong floor.')},
+ ()=>{let item=r(10000,45000,500),status=Math.random()>.5?'Single':'MFJ',std=status==='Single'?state.settings.stdSingle:state.settings.stdMFJ,best=Math.max(item,std);return q('deductions','Itemized versus standard',`A ${status} taxpayer has potential itemized deductions of ${money(item)}. The applicable standard deduction is ${money(std)}. Ignoring other limitations, which deduction amount should the taxpayer use to minimize taxable income?`,money(best),[money(Math.min(item,std)),money(item+std),money(0)],'A taxpayer generally chooses the larger of allowable itemized deductions or the standard deduction.',`max(${money(item)}, ${money(std)}) = ${money(best)}`,'Adding the standard deduction and itemized deductions together.')}
+ ],
+ estimated:[
+ ()=>{let prior=r(18000,60000,1000),current=r(20000,80000,1000),high=Math.random()>.5,priorPct=high?1.10:1,required=Math.min(current*.9,prior*priorPct);return q('estimated','Required annual payment safe harbor',`A taxpayer expects current-year tax of ${money(current)} and had prior-year tax of ${money(prior)}. ${high?'Prior-year AGI exceeded the higher-income threshold.':'Prior-year AGI did not exceed the higher-income threshold.'} What required annual payment generally avoids the underpayment penalty?`,money(required),[money(current*.9),money(prior*priorPct),money(current)],'The required annual payment is generally the smaller of 90% of current-year tax or 100% of prior-year tax, increased to 110% for certain higher-income taxpayers.',`90% current year = ${money(current*.9)}\nPrior-year safe harbor = ${money(prior*priorPct)}\nSmaller amount = ${money(required)}`,'Choosing the larger safe-harbor amount.')},
+ ()=>{let annual=r(12000,48000,1000),qtr=annual/4;return q('estimated','Quarterly installments',`A taxpayer's required annual payment is ${money(annual)} and income is earned evenly throughout the year. What is each equal quarterly installment?`,money(qtr),[money(annual/12),money(annual/2),money(annual)],'When equal installments apply, divide the required annual payment by four.',`${money(annual)} ÷ 4 = ${money(qtr)}`,'Dividing by 12 instead of four payment periods.')},
+ ()=>q('estimated','Annualized income installment method',`Which taxpayer is most likely to benefit from the annualized income installment method?`,'A taxpayer whose income is earned unevenly, with a large gain late in the year.',['A taxpayer with identical monthly wages all year.','A taxpayer who paid all required installments early.','A taxpayer with no tax liability.'],'The annualized method can align required installments with uneven income rather than assuming income arose evenly throughout the year.','Conceptual question','Assuming every taxpayer must use equal installments regardless of income timing.')
+ ],
+ planning:[
+ ()=>q('planning','Timing income and deductions',`A cash-method taxpayer expects to be in a substantially lower marginal tax bracket next year. Which action generally produces a current-value tax benefit, assuming no special limitations?`,'Defer taxable income to next year and accelerate deductible expenses into the current year.',['Accelerate income and defer expenses.','Accelerate both income and expenses without analysis.','Defer both income and expenses regardless of tax rates.'],'When the future rate is expected to be lower, deferring income can move it to the lower-rate year, while accelerating deductions can use them against the higher current rate.','Conceptual question','Memorizing “always defer tax” without comparing deductions and tax rates.')},
+ ()=>{let gain=r(6000,25000,1000),loss=r(1000,gain,1000),net=gain-loss;return q('planning','Capital gain and loss harvesting',`Before year-end, a taxpayer has ${money(gain)} of realized capital gains and realizes ${money(loss)} of capital losses. Ignoring character differences and other limitations, what net capital gain remains?`,money(net),[money(gain),money(loss),money(gain+loss)],'Capital losses first offset capital gains.',`${money(gain)} − ${money(loss)} = ${money(net)}`,'Adding losses to gains instead of netting them.')},
+ ()=>q('planning','Bunching deductions',`What is the primary objective of bunching discretionary itemized deductions into alternating years?`,'To exceed the standard deduction in selected years and use the standard deduction in the other years.',['To claim both itemized and standard deductions in the same year.','To permanently avoid substantiation requirements.','To convert personal expenses into business deductions.'],'Bunching concentrates deductible payments so itemizing becomes worthwhile in one year, while the standard deduction may be used in another.','Conceptual question','Thinking bunching permits double deductions.')}
+ ]
+};
+let current=null,mode='mixed';
+function statsFor(id){return state.stats[id]||{correct:0,total:0}}
+function renderHome(){
+ let total=0,correct=0,mastered=0;TOPICS.forEach(t=>{let s=statsFor(t.id);total+=s.total;correct+=s.correct;if(s.total>=5&&s.correct/s.total>=.8)mastered++});
+ accuracyMetric.textContent=total?Math.round(correct/total*100)+'%':'0%';answeredMetric.textContent=total;streakMetric.textContent=state.streak;masteredMetric.textContent=mastered+'/8';
+ topicList.innerHTML=TOPICS.map(t=>{let s=statsFor(t.id),pct=s.total?Math.round(s.correct/s.total*100):0;return `<label class="card topic"><input type="checkbox" data-topic="${t.id}" ${state.selected[t.id]?'checked':''}><div class="topic-main"><div class="topic-name">${t.name}</div><div class="topic-sub"><span>${t.sub}</span><span>${s.total?`${pct}% (${s.total})`:'Not started'}</span></div><div class="bar"><i style="width:${pct}%"></i></div></div></label>`}).join('');
+ document.querySelectorAll('[data-topic]').forEach(x=>x.onchange=e=>{state.selected[e.target.dataset.topic]=e.target.checked;save()});
+}
+function eligibleTopics(){return TOPICS.filter(t=>state.selected[t.id]&&BANK[t.id]?.length).map(t=>t.id)}
+function getQuestion(forceTopic){let ids=eligibleTopics();if(!ids.length)return null;let id=forceTopic;if(!id){if(mode==='weak'){ids.sort((a,b)=>{let A=statsFor(a),B=statsFor(b);return (A.total?A.correct/A.total:0)-(B.total?B.correct/B.total:0)});id=ids[0]}else if(mode==='missed'&&state.missed.length){id=state.missed[r(0,state.missed.length-1)].topic}else id=ids[r(0,ids.length-1)]}let arr=BANK[id];return arr[r(0,arr.length-1)]()}
+function startQuiz(m='mixed',force){mode=m;showView('quiz');current=getQuestion(force);renderQuestion()}
+function renderQuestion(){if(!current){questionText.innerHTML='<div class="empty">Select at least one topic on the Home screen.</div>';choices.innerHTML='';return}quizTopic.textContent=TOPICS.find(t=>t.id===current.topic).name;quizMeta.textContent=current.concept;questionText.textContent=current.prompt;choices.innerHTML=current.choices.map(c=>`<button class="choice">${c}</button>`).join('');feedback.classList.add('hidden');nextBtn.classList.add('hidden');anotherBtn.classList.add('hidden');document.querySelectorAll('.choice').forEach(b=>b.onclick=()=>answer(b))}
+function answer(btn){if(!feedback.classList.contains('hidden'))return;let chosen=btn.textContent,ok=chosen===current.correct;document.querySelectorAll('.choice').forEach(b=>{b.disabled=true;if(b.textContent===current.correct)b.classList.add('correct')});if(!ok)btn.classList.add('wrong');let s=statsFor(current.topic);s.total++;if(ok){s.correct++;state.streak++}else{state.streak=0;state.missed.push({topic:current.topic,concept:current.concept});state.missed=state.missed.slice(-100)}state.stats[current.topic]=s;save();feedback.innerHTML=`<h3 style="color:${ok?'var(--good)':'var(--bad)'}">${ok?'Correct':'Not quite'} — ${current.correct}</h3><p>${current.why}</p><div class="calc">${current.calc}</div><p><b>Common trap:</b> ${current.trap}</p>`;feedback.classList.remove('hidden');nextBtn.classList.remove('hidden');anotherBtn.classList.remove('hidden')}
+function showView(v){homeView.classList.toggle('hidden',v!=='home');quizView.classList.toggle('hidden',v!=='quiz');settingsView.classList.toggle('hidden',v!=='settings');document.querySelectorAll('.navbtn').forEach(b=>b.classList.toggle('active',b.dataset.view===v));if(v==='home')renderHome();if(v==='settings')renderSettings();if(v==='quiz'&&!current){current=getQuestion();renderQuestion()}}
+function renderSettings(){taxYear.value=state.settings.taxYear;hsaSelf.value=state.settings.hsaSelf;hsaFamily.value=state.settings.hsaFamily;stdSingle.value=state.settings.stdSingle;stdMFJ.value=state.settings.stdMFJ}
+function bindSetting(el,key){el.onchange=()=>{state.settings[key]=Number(el.value);taxYearLabel.textContent=state.settings.taxYear;save()}}
+bindSetting(taxYear,'taxYear');bindSetting(hsaSelf,'hsaSelf');bindSetting(hsaFamily,'hsaFamily');bindSetting(stdSingle,'stdSingle');bindSetting(stdMFJ,'stdMFJ');
+mixedBtn.onclick=()=>startQuiz('mixed');weakBtn.onclick=()=>startQuiz('weak');missedBtn.onclick=()=>startQuiz('missed');exitQuiz.onclick=()=>showView('home');nextBtn.onclick=()=>{current=getQuestion();renderQuestion()};anotherBtn.onclick=()=>{current=getQuestion(current.topic);renderQuestion()};resetBtn.onclick=()=>{if(confirm('Reset all study progress?')){state.stats={};state.missed=[];state.streak=0;save();renderHome()}};document.querySelectorAll('.navbtn').forEach(b=>b.onclick=()=>showView(b.dataset.view));taxYearLabel.textContent=state.settings.taxYear;renderHome();
+</script>
+</body>
+</html>
