@@ -1,11 +1,13 @@
-const CACHE='tcp-mastery-v27-pwa-hardened';
-const CORE=['./','./index.html','./manifest.json','./icon-192.png','./icon-512.png'];
+const CACHE='tcp-mastery-v33-pwa-hardened-2';
+const PAYLOAD=Array.from({length:8},(_,i)=>`./payload/chunk-${String(i).padStart(2,'0')}.txt`);
+const CORE=['./','./index.html','./manifest.json','./icon-192.png','./icon-512.png',...PAYLOAD];
 const OFFLINE_URL='./index.html';
 
 self.addEventListener('install',event=>{
   event.waitUntil(
     caches.open(CACHE)
       .then(cache=>cache.addAll(CORE.map(url=>new Request(url,{cache:'reload'}))))
+      .then(()=>self.skipWaiting())
   );
 });
 
