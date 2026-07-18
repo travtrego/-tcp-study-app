@@ -1,6 +1,6 @@
 {
-  "name": "TCP Mastery v32",
-  "short_name": "TCP v32",
+  "name": "TCP Mastery v33",
+  "short_name": "TCP v33",
   "start_url": "./?source=pwa",
   "scope": "./",
   "display": "standalone",
@@ -20,7 +20,7 @@
       "purpose": "any maskable"
     }
   ],
-  "description": "TCP Mastery v32 \u2014 Unit 1 90% content maturity release",
+  "description": "TCP Mastery v33 — Unit 1 CPA study app",
   "categories": [
     "education",
     "productivity"
