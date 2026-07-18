@@ -1,6 +1,6 @@
 {
-  "name": "TCP Mastery \u2014 Unit 1",
-  "short_name": "TCP Unit 1",
+  "name": "TCP Mastery v33",
+  "short_name": "TCP v33",
   "start_url": "./?source=pwa",
   "scope": "./",
   "display": "standalone",
@@ -20,17 +20,10 @@
       "purpose": "any maskable"
     }
   ],
-  "description": "CPA TCP Unit 1 study app with isolated local profiles and validated backups.",
-  "categories": [
-    "education",
-    "productivity"
-  ],
+  "description": "TCP Mastery v33 — Unit 1 CPA practice organized by topic and category.",
+  "categories": ["education", "productivity"],
   "id": "tcp-mastery-unit-1",
-  "display_override": [
-    "window-controls-overlay",
-    "standalone",
-    "minimal-ui"
-  ],
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
   "orientation": "any",
   "lang": "en-US",
   "dir": "ltr",
