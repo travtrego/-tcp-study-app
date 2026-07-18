@@ -1,5 +1,6 @@
-const CACHE='tcp-mastery-v33-pwa-hardened-2';
-const PAYLOAD=Array.from({length:8},(_,i)=>`./payload/chunk-${String(i).padStart(2,'0')}.txt`);
+const CACHE='tcp-mastery-v33-pwa-hardened-3';
+const VERSION='v33-final-20260718-1';
+const PAYLOAD=Array.from({length:8},(_,i)=>`./payload/chunk-${String(i).padStart(2,'0')}.txt?v=${VERSION}`);
 const CORE=['./','./index.html','./manifest.json','./icon-192.png','./icon-512.png',...PAYLOAD];
 const OFFLINE_URL='./index.html';
 
@@ -32,7 +33,7 @@ self.addEventListener('fetch',event=>{
   if(req.mode==='navigate'){
     event.respondWith((async()=>{
       try{
-        const fresh=await fetch(req);
+        const fresh=await fetch(req,{cache:'reload'});
         if(fresh&&fresh.ok){
           const cache=await caches.open(CACHE);
           cache.put(OFFLINE_URL,fresh.clone()).catch(()=>{});
@@ -42,6 +43,22 @@ self.addEventListener('fetch',event=>{
         return (await caches.match(OFFLINE_URL)) ||
           new Response('<h1>TCP Mastery is offline</h1><p>Reconnect once to finish installation.</p>',
           {headers:{'Content-Type':'text/html; charset=utf-8'},status:503});
+      }
+    })());
+    return;
+  }
+
+  if(url.pathname.includes('/payload/')){
+    event.respondWith((async()=>{
+      try{
+        const fresh=await fetch(req,{cache:'reload'});
+        if(fresh&&fresh.ok){
+          const cache=await caches.open(CACHE);
+          cache.put(req,fresh.clone()).catch(()=>{});
+        }
+        return fresh;
+      }catch(e){
+        return (await caches.match(req)) || new Response('',{status:504,statusText:'Offline'});
       }
     })());
     return;
